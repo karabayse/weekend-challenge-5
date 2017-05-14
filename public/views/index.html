@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weekend Challenge #5</title>
+  <link rel="stylesheet" href="../vendors/bootstrap.min.css">
+  <link rel="stylesheet" href="/views/styles.css">
+  <script src="../vendors/angular.min.js" charset="utf-8"></script>
+  <script src="../scripts/client.js" charset="utf-8"></script>
+  <!-- <script src="../modules/schemas.js" charset="utf-8"></script> -->
+  </head>
+
+  <body ng-app="myApp">
+    <h1>Movie Search</h1>
+
+    <div ng-controller="MovieSearch as ms" ng-init="ms.getMovies()">
+      <input type="text" name="" value="" ng-model="ms.title" placeholder="Movie Title">
+      <button type="button" name="button" ng-click="ms.submitMovie()">Submit</button>
+
+    <div class="container row">
+        <h3>Favorite Movies</h3>
+        <div class="col-sm-3" ng-repeat="thing in ms.movieArray">
+          <p>{{thing.title}} {{hing.year}} {{thing.img}}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
