@@ -9,22 +9,15 @@ myApp.controller('MovieSearch', function($http){
   var vm = this;
   vm.movieArray = [];
 
-vm.getMovies = function(title, year, poster){
-  console.log('in getMovies ng-click');
-  var objectToSend = {
-    title: vm.title,
-    year: vm.year,
-    poster: vm.poster
-  }; // end objectToSend
-  console.log('adding objectToSend ->', objectToSend);
-  $http({
+vm.getMovies = function(){
+  return $http({
     method: 'GET',
-    url: 'http://www.omdbapi.com/?s=' + vm.title
+    url: 'http://www.omdbapi.com/?s=' + 'ms'
   }).then(function success(response){
   console.log('this is the response', response);
-  vm.movieArray = response.data.Search;
+  vm.movieArray = response.data;
   console.log('in vm response ->', response.data);
-  console.log(vm.movieArray);
+  // return vm.movieArray = response.data.Search;
 });
 }; // end getMovies function
 }); // end controller

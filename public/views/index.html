@@ -13,9 +13,10 @@
   <body ng-app="myApp">
     <h1>Movie Search</h1>
 
-    <div ng-controller="MovieSearch as ms" ng-init="ms.getMovies()">
+    <div ng-controller="MovieSearch as ms" ng-init="ms.getMovies('')">
       <input type="text" name="" value="" ng-model="ms.title" placeholder="Movie Title">
-      <button type="button" name="button" ng-click="ms.submitMovie()">Submit</button>
+      <input type="text" name="" value="" ng-model="ms.year" placeholder="Year">
+      <button type="button" name="button" ng-click="ms.getMovies('')">Submit</button>
 
     <div class="container row">
         <h3>Favorite Movies</h3>

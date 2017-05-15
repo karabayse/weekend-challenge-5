@@ -4,15 +4,20 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var port = process.env.Port || 6378;
 
 // modules
 // var schema = require('./public/modules/schemas');
+
+// uses
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
 
 mongoose.connect('localhost:27017/movies');
 
 // create Schema
 var movieSchema = mongoose.Schema({
-
   title: String,
   year: Number,
   img: { data: Buffer, contentType: String }
@@ -21,22 +26,12 @@ var movieSchema = mongoose.Schema({
 // create Schema collection
 var movieCollection = mongoose.model('movieCollection', movieSchema);
 
-// module.exports = movieCollection;
-
-// uses
-app.use(express.static('public'));
-app.use(bodyParser.urlencoded({extended:true}));
-app.use(bodyParser.json());
-
-
-var port = process.env.Port || 6378;
-
-// app.get('http://www.omdbapi.com/?s=' ', function(req, res){
-//   console.log('in get movies');
-//   movies.find().then(function(data){
-//     res.send(data);
-//   });
-// });
+app.get('http://www.omdbapi.com/?s=' + 'ms', function(req, res){
+  console.log('in get movies');
+  movies.find().then(function(data){
+    res.send(data);
+  });
+});
 
 app.get('/', function(req, res){
   console.log('base url hit');
