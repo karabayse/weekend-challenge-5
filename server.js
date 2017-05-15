@@ -20,7 +20,7 @@ mongoose.connect('localhost:27017/movies');
 var movieSchema = mongoose.Schema({
   title: String,
   year: Number,
-  img: { data: Buffer, contentType: String }
+  poster: String
 });
 
 // create Schema collection

@@ -21,7 +21,8 @@
     <div class="container row">
         <h3>Favorite Movies</h3>
         <div class="col-sm-3" ng-repeat="thing in ms.movieArray">
-          <p>{{thing.title}} {{hing.year}} {{thing.img}}</p>
+          {{thing.Title}} {{thing.Year}}
+          <img ng-src="{{thing.Poster}}">
         </div>
       </div>
     </div>

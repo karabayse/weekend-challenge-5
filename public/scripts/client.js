@@ -12,10 +12,10 @@ myApp.controller('MovieSearch', function($http){
 vm.getMovies = function(){
   return $http({
     method: 'GET',
-    url: 'http://www.omdbapi.com/?s=' + 'ms'
+    url: 'http://www.omdbapi.com/?s=' + vm.title
   }).then(function success(response){
   console.log('this is the response', response);
-  vm.movieArray = response.data;
+  vm.movieArray = response.data.Search;
   console.log('in vm response ->', response.data);
   // return vm.movieArray = response.data.Search;
 });
