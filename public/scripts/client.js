@@ -9,8 +9,9 @@ myApp.controller('MovieSearch', function($http){
   var vm = this;
   vm.movieArray = [];
 
+// function to get movies
 vm.getMovies = function(){
-  return $http({
+  $http({
     method: 'GET',
     url: 'http://www.omdbapi.com/?s=' + vm.title
   }).then(function success(response){
@@ -20,4 +21,17 @@ vm.getMovies = function(){
   // return vm.movieArray = response.data.Search;
 });
 }; // end getMovies function
+
+// function to add movies as favorites
+vm.addAsFavorite = function(movie){
+  console.log(vm.movieArray);
+  $http({
+    method: 'POST',
+    url: '/favoritemovies',
+    data: movie
+  }).then(function(response){
+    console.log(response);
+    getMovies();
+  });
+}; // end addAsFavorite function
 }); // end controller
